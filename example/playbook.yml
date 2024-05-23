@@ -1,0 +1,6 @@
+- name: Deploy Gitlab
+  hosts: gitlab
+  tasks:
+    - name: Import role
+      ansible.builtin.import_role:
+        name: adfinis.gitlab.omnibus_gitlab

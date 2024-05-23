@@ -1,0 +1,4 @@
+collections:
+  - name: https://github.com/alesz/gitlab-ansible-collection.git
+    type: git
+    version: main
