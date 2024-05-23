@@ -14,7 +14,8 @@ description: your collection description
 license_file: LICENSE
 # TO-DO: update the tags based on your content type
 tags: ["linux", "tools"]
-dependencies: {}
+dependencies:
+  community.crypto: 2.20.0
 
 repository: http://example.com/repository
 documentation: http://docs.example.com
