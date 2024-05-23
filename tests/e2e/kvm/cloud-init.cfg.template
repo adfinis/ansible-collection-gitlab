@@ -1,0 +1,16 @@
+#cloud-config
+hostname: gitlab-e2e-ansible
+manage_etc_hosts: false
+ssh_pwauth: false
+disable_root: true
+users:
+- name: debian
+  sudo: ALL=(ALL) NOPASSWD:ALL
+  shell: /bin/bash
+  lock-passwd: false
+  ssh_authorized_keys:
+  - <SSH_KEY>
+package_update: true
+package_upgrade: true
+packages:
+  - net-tools

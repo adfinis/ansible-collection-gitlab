@@ -1,0 +1,108 @@
+gitlab_version: "16.11.1"
+gitlab_release: "ee.0"
+gitlab_is_primary: "true"
+#gitlab_external_url: "https://gitlab.example.com" 
+gitlab_time_zone: "Europe/Zurich"
+#gitlab_nginx_listen_https: "true"
+#gitlab_nginx_listen_port: "443"
+#gitlab_nginx_redirect_http_to_https: "true"
+#gitlab_smtp_enable: "true"
+gitlab_default_theme: 2
+#gitlab_registry_enable: "false"
+
+#gitlab_redis_password: "{{ gitlab_redis_password_vault }}"
+#gitlab_gitaly_token: "{{ gitlab_gitaly_token_vault }}"
+#gitlab_secret_token: "{{ gitlab_secret_token_vault }}"
+#gitlab_postgresql_db_password: "{{ gitlab_postgresql_db_password_vault }}"
+
+gitlab_additional_configurations:
+  - gitlab_rails:
+      # SMTP
+      # - key: "smtp_address"
+      #   value: "smtp-relay.gmail.com"
+      # - key: "smtp_port"
+      #   value: 587
+      # - key: "smtp_domain"
+      #   value: "example.com"
+      # - key: "gitlab_email_from"
+      #   value: "gitlab@gitlab.example.com
+      # - key: "gitlab_email_display_name"
+      #   value: "GitLab Example"
+      # - key: "gitlab_email_reply_to"
+      #   value: "noreply@gitlab.example.com"
+      # - key: "allowed_hosts"
+      #   value: []
+
+      # SSH
+      - key: "gitlab_shell_ssh_port"
+        value: 22
+
+      # Tuning
+      # - key: "worker_timeout"
+      #   value: 120
+      # - key: "worker_processes"
+      #   value: 24
+      # - key: "env"
+      #   type: "plain"
+      #   value: |-
+      #     { 'GITLAB_RAILS_RACK_TIMEOUT' => 600 }
+
+      # Consolidated object storage configuration
+      # - key: ["object_store", "enabled"]
+      #   type: "plain"
+      #   value: "true"
+      # - key: ["object_store", "connection"]
+      #   type: "plain"
+      #   value: |-
+      #     {
+      #       'provider' => 'Google',
+      #       'google_project' => 'my-project-id',
+      #       'google_client_email' => 'gitlab-backup@my-project-id.iam.gserviceaccount.com',
+      #       'google_json_key_location' => '/etc/gitlab/my-project.json'
+      #     }
+      # gitlab_rails['object_store']['objects']['artifacts']['bucket'] = 'gitlab-artifacts'
+      # gitlab_rails['object_store']['objects']['external_diffs']['bucket'] = 'gitlab-mr-diffs'
+      # gitlab_rails['object_store']['objects']['lfs']['bucket'] = 'gitlab-lfs'
+      # gitlab_rails['object_store']['objects']['uploads']['bucket'] = 'gitlab-uploads'
+      # gitlab_rails['object_store']['objects']['packages']['bucket'] = 'gitlab-packages'
+      # gitlab_rails['object_store']['objects']['dependency_proxy']['bucket'] = 'gitlab-dependency-proxy'
+      # gitlab_rails['object_store']['objects']['terraform_state']['bucket'] = 'gitlab-terraform-state'
+      # gitlab_rails['object_store']['objects']['pages']['bucket'] = 'gitlab-pages'
+
+      # Backup
+      # - key: "backup_upload_connection"
+      #   type: "plain"
+      #   value: |-
+      #     {
+      #       'provider' => 'Google',
+      #       'google_project' => 'my-project-id',
+      #       'google_client_email' => 'gitlab-backup@my-project-id.iam.gserviceaccount.com',
+      #       'google_json_key_location' => '/etc/gitlab/my-project.json'
+      #     }
+      # - key: "backup_upload_remote_directory"
+      #   value: "my-gitlab-backup"
+  - nginx:
+      - key: "ssl_certificate"
+        value: "/etc/gitlab/ssl/srv-gitlab.crt"
+      - key: "ssl_certificate_key"
+        value: "/etc/gitlab/ssl/srv-gitlab.key"
+  - gitaly:
+      - key: "configuration"
+        value:
+          { hooks: { custom_hooks_dir: "/var/opt/gitlab/gitaly/custom_hooks" } }
+  - logging:
+      - key: "log_group"
+        value: "git"
+      - key: "svlogd_num"
+        value: 5
+      - key: "logrotate_rotate"
+        value: 5
+  - puma:
+      - key: "per_worker_max_memory_mb"
+        value: 1024
+  # - letsencrypt:
+  #     - key: "enable"
+  #       value: "true"
+  #       type: "plain"
+      # - key: "contact_emails"
+      #   value: ['user@example.com']

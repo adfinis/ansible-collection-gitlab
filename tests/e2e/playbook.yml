@@ -1,0 +1,6 @@
+- name: Deploy Gitlab
+  hosts: gitlab
+  tasks:
+    - name: Import playbook
+      ansible.builtin.import_role:
+        name: omnibus_gitlab
