@@ -1,6 +1,9 @@
 - name: Deploy Gitlab
   hosts: gitlab
   tasks:
-    - name: Import playbook
+    - name: Import GitLab playbook
       ansible.builtin.import_role:
         name: omnibus_gitlab
+    - name: Import signalilo playbook
+      ansible.builtin.import_role:
+        name: signalilo

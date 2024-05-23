@@ -1,0 +1,16 @@
+
+[Unit]
+Description=Signalilo
+After=multi-user.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/usr/local/etc/signalilo.env
+ExecStart=/usr/local/bin/signalilo
+Restart=always
+RestartSec=10
+User=signalilo
+Group=signalilo
+
+[Install]
+WantedBy=multi-user.target
