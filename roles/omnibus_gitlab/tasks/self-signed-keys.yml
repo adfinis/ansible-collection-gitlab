@@ -2,7 +2,7 @@
   ansible.builtin.file:
     path: /etc/gitlab/ssl
     state: directory
-    recurse: True
+    recurse: true
 
 - name: Create private key (RSA, 4096 bits)
   community.crypto.openssl_privatekey:
