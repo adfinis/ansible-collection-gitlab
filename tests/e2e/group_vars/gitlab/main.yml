@@ -1,11 +1,11 @@
 gitlab_version: "16.11.1"
 gitlab_release: "ee.0"
 gitlab_is_primary: "true"
-#gitlab_external_url: "https://gitlab.example.com" 
+gitlab_external_url: "https://{{ ansible_host }}" 
 gitlab_time_zone: "Europe/Zurich"
-#gitlab_nginx_listen_https: "true"
-#gitlab_nginx_listen_port: "443"
-#gitlab_nginx_redirect_http_to_https: "true"
+gitlab_nginx_listen_https: "true"
+gitlab_nginx_listen_port: "443"
+gitlab_nginx_redirect_http_to_https: "true"
 #gitlab_smtp_enable: "true"
 gitlab_default_theme: 2
 #gitlab_registry_enable: "false"
@@ -14,6 +14,8 @@ gitlab_default_theme: 2
 #gitlab_gitaly_token: "{{ gitlab_gitaly_token_vault }}"
 #gitlab_secret_token: "{{ gitlab_secret_token_vault }}"
 #gitlab_postgresql_db_password: "{{ gitlab_postgresql_db_password_vault }}"
+
+generate_self_signed_keys: true
 
 gitlab_additional_configurations:
   - gitlab_rails:
@@ -100,9 +102,9 @@ gitlab_additional_configurations:
   - puma:
       - key: "per_worker_max_memory_mb"
         value: 1024
-  # - letsencrypt:
-  #     - key: "enable"
-  #       value: "true"
-  #       type: "plain"
+  - letsencrypt:
+      - key: "enable"
+        value: "false"
+        type: "plain"
       # - key: "contact_emails"
       #   value: ['user@example.com']

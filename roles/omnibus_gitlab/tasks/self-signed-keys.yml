@@ -1,0 +1,15 @@
+- name: Create ssl directory
+  ansible.builtin.file:
+    path: /etc/gitlab/ssl
+    state: directory
+    recurse: True
+
+- name: Create private key (RSA, 4096 bits)
+  community.crypto.openssl_privatekey:
+    path: /etc/gitlab/ssl/srv-gitlab.key
+
+- name: Create simple self-signed certificate
+  community.crypto.x509_certificate:
+    path: /etc/gitlab/ssl/srv-gitlab.crt
+    privatekey_path: /etc/gitlab/ssl/srv-gitlab.key
+    provider: selfsigned

@@ -8,6 +8,12 @@
 - name: Set OS distribution dependent variables
   ansible.builtin.include_vars: "{{ ansible_facts.distribution }}.yml"
 
+- name: Generate self-signed keys
+  ansible.builtin.import_tasks: self-signed-keys.yml
+  become: true
+  when: generate_self_signed_keys | default(False) == True
+
+
 - name: Check whether gitlab-rails binary is installed
   ansible.builtin.stat:
     path: "/usr/bin/gitlab-rails"
