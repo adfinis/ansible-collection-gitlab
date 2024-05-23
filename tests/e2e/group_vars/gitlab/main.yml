@@ -1,4 +1,4 @@
-gitlab_version: "16.11.1"
+gitlab_version: "17.0.1"
 gitlab_release: "ee.0"
 gitlab_is_primary: "true"
 gitlab_external_url: "https://{{ ansible_host }}" 
@@ -108,3 +108,19 @@ gitlab_additional_configurations:
         type: "plain"
       # - key: "contact_emails"
       #   value: ['user@example.com']
+
+
+signalilo_icinga_url: http://api-icinga
+signalilo_icinga_hostname: gitlab.example.com
+signalilo_icinga_username: changeme-signalilo
+signalilo_icinga_password: changeme
+signalilo_alertmanager_port: 8888
+signalilo_alertmanager_bearer_token: changeme
+signalilo_icinga_debug: false
+signalilo_alertmanager_pluginoutput_annotations: |
+  description
+  message
+signalilo_icinga_ca: |
+  -----BEGIN CERTIFICATE-----
+  ---
+  -----END CERTIFICATE-----
