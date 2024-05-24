@@ -1,0 +1,8 @@
+- name: Create file with GCP SA for backup
+  ansible.builtin.copy:
+    content: "{{ gcp_backup_service_account_json }}"
+    dest: /etc/gitlab/gcp-backup-sa.json
+    owner: root
+    group: root
+    mode: "0640"
+  become: true

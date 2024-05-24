@@ -13,6 +13,10 @@
   become: true
   when: generate_self_signed_keys | default(false)
 
+- name: Copy GCP credentials for backup
+  ansible.builtin.import_tasks: gcp-backup.yml
+  become: true
+  when: gcp_backup_service_enabled | default(false)
 
 - name: Check whether gitlab-rails binary is installed
   ansible.builtin.stat:
