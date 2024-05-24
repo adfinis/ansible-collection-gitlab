@@ -140,7 +140,7 @@ gitlab_additional_configurations:
           } 
 
 
-
+signalilo_uuid: 4028c364-7a55-4c8f-b190-32e1b49e116b
 signalilo_icinga_url: http://api-icinga
 signalilo_icinga_hostname: gitlab.example.com
 signalilo_icinga_username: changeme-signalilo
