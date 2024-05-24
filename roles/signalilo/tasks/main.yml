@@ -6,9 +6,16 @@
 
 - name: Get signalilo binary from image using Podman
   ansible.builtin.shell:
-    cmd: export IMG="quay.io/vshn/signalilo:latest" && podman pull $IMG && export ID=$(podman create $IMG) && podman cp $ID:/usr/local/bin/signalilo {{ playbook_dir }}/signalilo_bin && podman rm $ID
+    cmd: |
+      export IMG="quay.io/vshn/signalilo:latest" && \
+      podman pull $IMG && \
+      export ID=$(podman create $IMG) && \
+      podman cp $ID:/usr/local/bin/signalilo {{ playbook_dir }}/signalilo_bin && \
+      podman rm $ID
   delegate_to: localhost
-  when: signalilo_check.stat.exists == false
+  changed_when: signalilo_check.stat.exists is false
+  when: signalilo_check.stat.exists is false
+
 
 - name: Check again if local copy of Signalilo exists
   ansible.builtin.stat:
@@ -38,7 +45,7 @@
     group: root
     mode: '0755'
   become: true
-  when: signalilo_check2.stat.exists == True
+  when: signalilo_check2.stat.exists
 
 - name: Create env file for configuration
   ansible.builtin.template:

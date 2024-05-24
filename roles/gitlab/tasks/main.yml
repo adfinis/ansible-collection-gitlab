@@ -11,7 +11,7 @@
 - name: Generate self-signed keys
   ansible.builtin.import_tasks: self-signed-keys.yml
   become: true
-  when: generate_self_signed_keys | default(false) == true
+  when: generate_self_signed_keys | default(false)
 
 
 - name: Check whether gitlab-rails binary is installed

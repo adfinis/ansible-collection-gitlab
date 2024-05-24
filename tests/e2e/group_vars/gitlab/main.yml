@@ -1,19 +1,19 @@
 gitlab_version: "17.0.1"
 gitlab_release: "ee.0"
 gitlab_is_primary: "true"
-gitlab_external_url: "https://{{ ansible_host }}" 
+gitlab_external_url: "https://{{ ansible_host }}"
 gitlab_time_zone: "Europe/Zurich"
 gitlab_nginx_listen_https: "true"
 gitlab_nginx_listen_port: "443"
 gitlab_nginx_redirect_http_to_https: "true"
-#gitlab_smtp_enable: "true"
+# gitlab_smtp_enable: "true"
 gitlab_default_theme: 2
-#gitlab_registry_enable: "false"
+# gitlab_registry_enable: "false"
 
-#gitlab_redis_password: "{{ gitlab_redis_password_vault }}"
-#gitlab_gitaly_token: "{{ gitlab_gitaly_token_vault }}"
-#gitlab_secret_token: "{{ gitlab_secret_token_vault }}"
-#gitlab_postgresql_db_password: "{{ gitlab_postgresql_db_password_vault }}"
+# gitlab_redis_password: "{{ gitlab_redis_password_vault }}"
+# gitlab_gitaly_token: "{{ gitlab_gitaly_token_vault }}"
+# gitlab_secret_token: "{{ gitlab_secret_token_vault }}"
+# gitlab_postgresql_db_password: "{{ gitlab_postgresql_db_password_vault }}"
 
 generate_self_signed_keys: true
 
