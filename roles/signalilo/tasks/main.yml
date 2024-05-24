@@ -55,6 +55,8 @@
     group: signalilo
     mode: '0640'
   become: true
+  notify:
+    - Restart Signalilo
 
 - name: Copy systemd service
   ansible.builtin.copy:

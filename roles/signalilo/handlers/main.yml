@@ -1,0 +1,7 @@
+
+- name: Restart Signalilo
+  ansible.builtin.systemd:
+    state: restarted
+    enabled: true
+    name: signalilo
+  become: true

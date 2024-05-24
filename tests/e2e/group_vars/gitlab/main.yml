@@ -108,6 +108,37 @@ gitlab_additional_configurations:
         type: "plain"
       # - key: "contact_emails"
       #   value: ['user@example.com']
+  - alertmanager:
+      - key: "receivers"
+        type: "plain"
+        value: |-
+          [
+            {
+              'name' => 'signalilo-receiver',
+              'webhook_configs' => [
+                {
+                  'send_resolved'         => 'true',
+                  'url'             => 'http://localhost:8888',
+                  'http_config'         => {
+                    'authorization' => {
+                      credentials_file: '/etc/gitlab/signalilo-bearer-token'
+                    }
+                  }
+                } 
+              ]
+            }
+          ]
+      - key: "routes"
+        type: "plain"
+        value: |-
+          {
+            'receiver'        => 'signalilo-receiver',
+            'group_wait'      => '30s',
+            'group_interval'  => '5m',
+            'repeat_interval' => '3h',
+            'matchers'        => [ 'alert = ServiceDown' ]
+          } 
+
 
 
 signalilo_icinga_url: http://api-icinga
