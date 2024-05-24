@@ -117,10 +117,10 @@ gitlab_additional_configurations:
               'name' => 'signalilo-receiver',
               'webhook_configs' => [
                 {
-                  'send_resolved'         => 'true',
-                  'url'             => 'http://localhost:8888',
-                  'http_config'         => {
-                    'authorization' => {
+                  'send_resolved'   => true,
+                  'url'             => 'http://localhost:8888/webhook',
+                  'http_config'     => {
+                    'authorization'   => {
                       credentials_file: '/etc/gitlab/signalilo-bearer-token'
                     }
                   }
@@ -136,7 +136,7 @@ gitlab_additional_configurations:
             'group_wait'      => '30s',
             'group_interval'  => '5m',
             'repeat_interval' => '3h',
-            'matchers'        => [ 'alert = ServiceDown' ]
+            'matchers'        => [ 'alertname != sendAll' ]
           } 
 
 
