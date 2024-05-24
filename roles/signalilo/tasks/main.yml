@@ -58,6 +58,15 @@
   notify:
     - Restart Signalilo
 
+- name: Create file with bearer token for alertmanager authentication
+  ansible.builtin.copy:
+    content: "{{ signalilo_alertmanager_bearer_token }}"
+    dest: /etc/gitlab/signalilo-bearer-token
+    owner: root
+    group: root
+    mode: '0640'
+  become: true
+
 - name: Copy systemd service
   ansible.builtin.copy:
     src: signalilo.service
