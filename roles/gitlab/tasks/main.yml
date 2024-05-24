@@ -13,11 +13,6 @@
   become: true
   when: generate_self_signed_keys | default(false)
 
-- name: Copy GCP credentials for backup
-  ansible.builtin.import_tasks: gcp-backup.yml
-  become: true
-  when: gcp_backup_service_enabled | default(false)
-
 - name: Check whether gitlab-rails binary is installed
   ansible.builtin.stat:
     path: "/usr/bin/gitlab-rails"
@@ -40,6 +35,11 @@
 - name: Install GitLab
   ansible.builtin.import_tasks: install.yml
   become: true
+
+- name: Copy GCP credentials for backup
+  ansible.builtin.import_tasks: gcp-backup.yml
+  become: true
+  when: gcp_backup_service_enabled | default(false)
 
 - name: Install custom hooks
   ansible.builtin.import_tasks: custom-hooks.yml

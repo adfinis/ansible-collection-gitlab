@@ -3,6 +3,6 @@
     content: "{{ gcp_backup_service_account_json }}"
     dest: /etc/gitlab/gcp-backup-sa.json
     owner: root
-    group: root
+    group: git
     mode: "0640"
   become: true
