@@ -1,68 +1,52 @@
-# Adfinis Gitlab Collection
+# Ansible Collection - adfinis.gitlab
 
-This repository contains the `adfinis.gitlab` Ansible Collection.
+![License](https://img.shields.io/github/license/adfinis/ansible-collection-gitlab)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/adfinis/ansible-collection-gitlab/ansible-lint.yml)
+[![adfinis.gitlab on Ansible Galaxy](https://img.shields.io/badge/collection-adfinis.gitlab-blue)](https://galaxy.ansible.com/ui/repo/published/adfinis/gitlab/)
 
-## Tested with Ansible
 
-Tested with ansible-core >=2.14 releases and the current development version of ansible-core.
+This role deploys GitLab package on Debian server.
 
-## External requirements
-
-Some modules and plugins require external libraries. Please check the requirements for each plugin or module you use in the documentation to find out which requirements are needed.
-
-## Included content
-
-Please check the included content on the [Ansible Galaxy page for this collection](https://galaxy.ansible.com/adfinis/gitlab).
-
-## Using this collection
-
-```
-    ansible-galaxy collection install adfinis.gitlab
-```
-
-You can also include it in a `requirements.yml` file and install it via `ansible-galaxy collection install -r requirements.yml` using the format:
+To use the role add following to the `requirements.yml`:
 
 ```yaml
 collections:
   - name: adfinis.gitlab
+    version: 1.0.0
 ```
 
-To upgrade the collection to the latest available version, run the following command:
+## Roles
 
-```bash
-ansible-galaxy collection install adfinis.gitlab --upgrade
+### `adfinis.gitlab.gitlab`
+
+Role is based on [HIFIS GitLab role](https://github.com/hifis-net/ansible-collection-toolkit/tree/main/roles/gitlab).
+
+It adds support for:
+- nested keys configuration as list e.g. `- key: ["object_store", "enabled"]`
+- deployment of custom pre-receive hooks
+- self-signed keys for test/PoC environments
+
+Configuration:
+
+See `roles/gitlab/defaults/main.yml`
+
+Example Playbook:
+
+```yaml
+- name: Deploy Gitlab
+  hosts: gitlab_server
+  tasks:
+    - name: Import GitLab role
+      ansible.builtin.import_role:
+        name: adfinis.gitlab.gitlab
 ```
 
-You can also install a specific version of the collection, for example, if you need to downgrade when something is broken in the latest version (please report an issue in this repository). Use the following syntax where `X.Y.Z` can be any [available version](https://galaxy.ansible.com/adfinis/gitlab):
+## License
 
-```bash
-ansible-galaxy collection install adfinis.gitlab:==X.Y.Z
-```
+[GPL-3.0-or-later](https://github.com/adfinis-sygroup/ansible-collection-gitlab/blob/main/LICENSE)
 
-See [Ansible Using collections](https://docs.ansible.com/ansible/latest/user_guide/collections_using.html) for more details.
+## Author Information
 
-## Release notes
+The Ansible collection `adfinis.gitlab` was written by:
 
-See the [changelog](https://github.com/ansible-collections/REPONAMEHERE/tree/main/CHANGELOG.rst).
-
-## Roadmap
-
-<!-- Optional. Include the roadmap for this collection, and the proposed release/versioning strategy so users can anticipate the upgrade/update cycle. -->
-
-## More information
-
-<!-- List out where the user can find additional information, such as working group meeting times, slack/IRC channels, or documentation for the product this collection automates. At a minimum, link to: -->
-
-- [Ansible Collection overview](https://github.com/ansible-collections/overview)
-- [Ansible User guide](https://docs.ansible.com/ansible/devel/user_guide/index.html)
-- [Ansible Developer guide](https://docs.ansible.com/ansible/devel/dev_guide/index.html)
-- [Ansible Collections Checklist](https://github.com/ansible-collections/overview/blob/main/collection_requirements.rst)
-- [Ansible Community code of conduct](https://docs.ansible.com/ansible/devel/community/code_of_conduct.html)
-- [The Bullhorn (the Ansible Contributor newsletter)](https://us19.campaign-archive.com/home/?u=56d874e027110e35dea0e03c1&id=d6635f5420)
-- [News for Maintainers](https://github.com/ansible-collections/news-for-maintainers)
-
-## Licensing
-
-GNU General Public License v3.0 or later.
-
-See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.txt) to see the full text.
+* Adfinis AG | [Website](https://www.adfinis.com/) | [GitHub](https://github.com/adfinis)
