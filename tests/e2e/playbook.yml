@@ -4,6 +4,3 @@
     - name: Import GitLab playbook
       ansible.builtin.import_role:
         name: gitlab
-    - name: Import signalilo playbook
-      ansible.builtin.import_role:
-        name: signalilo
