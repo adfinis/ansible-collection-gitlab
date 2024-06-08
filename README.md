@@ -5,7 +5,7 @@
 [![adfinis.gitlab on Ansible Galaxy](https://img.shields.io/badge/collection-adfinis.gitlab-blue)](https://galaxy.ansible.com/ui/repo/published/adfinis/gitlab/)
 
 
-This role deploys GitLab package on Debian server.
+This role deploys GitLab package.
 
 To use the role add following to the `requirements.yml`:
 
@@ -25,6 +25,8 @@ It adds support for:
 - nested keys configuration as list e.g. `- key: ["object_store", "enabled"]`
 - deployment of custom pre-receive hooks
 - self-signed keys for test/PoC environments
+
+Tested on Debian.
 
 Configuration:
 
