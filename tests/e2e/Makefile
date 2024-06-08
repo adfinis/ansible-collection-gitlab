@@ -34,7 +34,7 @@ browser: ip ## Open GitLab in a browser
 e2e: vm inventory ansible ## Run all - needs a wait loop for VM provisioning to complete
 
 clean-vm: ## Delete VM
-	sudo virsh destroy gitlab_e2e_ansible && sudo virsh undefine gitlab_e2e_ansible && sudo virsh vol-delete --pool default gitlab_e2e_ansible.qcow2 || true
+	sudo virsh destroy gitlab_e2e_ansible || true; sudo virsh undefine gitlab_e2e_ansible && sudo virsh vol-delete --pool default gitlab_e2e_ansible.qcow2 || true
 	
 clean-all: clean-vm ## Clean all
 	rm kvm/id_ed25519* inventory || true
