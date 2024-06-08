@@ -1,4 +1,3 @@
 collections:
-  - name: https://github.com/alesz/gitlab-ansible-collection.git
-    type: git
-    version: main
+  - name: adfinis.gitlab
+    # version: 1.0.0
