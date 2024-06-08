@@ -138,20 +138,3 @@ gitlab_additional_configurations:
             'repeat_interval' => '3h',
             'matchers'        => [ 'alertname != sendAll' ]
           } 
-
-
-signalilo_uuid: 4028c364-7a55-4c8f-b190-32e1b49e116b
-signalilo_icinga_url: http://api-icinga
-signalilo_icinga_hostname: gitlab.example.com
-signalilo_icinga_username: changeme-signalilo
-signalilo_icinga_password: changeme
-signalilo_alertmanager_port: 8888
-signalilo_alertmanager_bearer_token: changeme
-signalilo_icinga_debug: false
-signalilo_alertmanager_pluginoutput_annotations: |
-  description
-  message
-signalilo_icinga_ca: |
-  -----BEGIN CERTIFICATE-----
-  ---
-  -----END CERTIFICATE-----
