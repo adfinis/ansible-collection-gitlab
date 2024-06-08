@@ -124,7 +124,7 @@ gitlab_additional_configurations:
                       credentials_file: '/etc/gitlab/signalilo-bearer-token'
                     }
                   }
-                } 
+                }
               ]
             }
           ]
@@ -137,4 +137,4 @@ gitlab_additional_configurations:
             'group_interval'  => '5m',
             'repeat_interval' => '3h',
             'matchers'        => [ 'alertname != sendAll' ]
-          } 
+          }

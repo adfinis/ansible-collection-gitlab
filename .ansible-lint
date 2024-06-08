@@ -1,0 +1,7 @@
+---
+
+skip_list:
+  # - schema[galaxy]  # "adfinis.signalilo" is an invalid name
+  - meta-runtime[unsupported-version]
+  - galaxy[version-incorrect]
+  - galaxy[no-changelog]
