@@ -81,7 +81,7 @@
         metadata_expire: '300'
 
     - name: Update yum package cache
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
         update_cache: true
       check_mode: false
 
