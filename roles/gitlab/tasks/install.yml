@@ -123,7 +123,7 @@
   block:
 
     - name: Unhold GitLab if it does not contain version info
-      dpkg_selections:
+      ansible.builtin.dpkg_selections:
         name: "{{ gitlab_package_name }}"
         selection: install
       when: "'=' not in gitlab_package_name"
@@ -141,7 +141,7 @@
       when: not gitlab_is_initial_dryrun
 
     - name: Hold GitLab version if version is specified
-      dpkg_selections:
+      ansible.builtin.dpkg_selections:
         name: "{{ gitlab_package_name.split('=')[0] }}"
         selection: hold
       when: "'=' in gitlab_package_name"
