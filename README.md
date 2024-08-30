@@ -12,7 +12,7 @@ To use the role add following to the `requirements.yml`:
 ```yaml
 collections:
   - name: adfinis.gitlab
-    version: 1.0.0
+    version: 1.0.1
 ```
 
 ## Roles
@@ -25,6 +25,7 @@ It adds support for:
 - nested keys configuration as list e.g. `- key: ["object_store", "enabled"]`
 - deployment of custom pre-receive hooks
 - self-signed keys for test/PoC environments
+- apt package hold
 
 Tested on Debian.
 
