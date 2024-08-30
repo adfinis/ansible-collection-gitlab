@@ -12,6 +12,9 @@ ssh-key: ## Generate SSH key, if it doesn't exist
 vm: ssh-key ## Build and start VM
 	kvm/build-vm.sh
 
+console: ## Connect to VM console
+	sudo virsh console gitlab_e2e_ansible
+
 ip: ## Read IP address of the VM
 	$(eval IP=$(shell sh -c "sudo virsh domifaddr gitlab_e2e_ansible | grep vnet" | awk '{print $$4}' | awk -F / '{print $$1}'))
 	echo "IP is $(IP)"

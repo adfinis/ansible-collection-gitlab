@@ -122,15 +122,29 @@
 - name: "Install GitLab and add helper to detect failed reconfigures"
   block:
 
+    - name: Unhold GitLab if it does not contain version info
+      ansible.builtin.dpkg_selections:
+        name: "{{ gitlab_package_name }}"
+        selection: install
+      when: "'=' not in gitlab_package_name"
+
     - name: Install, downgrade or upgrade GitLab.
       become: true
       ansible.builtin.apt:
         name: "{{ gitlab_package_name }}"
         state: "{{ 'present' if gitlab_version | length > 0 else 'latest' }}"
-        allow_downgrade: true
+        allow_downgrade: false
+        allow_change_held_packages: true
+
       register: gitlab_install_output
       notify: GitLab has been installed or upgraded
       when: not gitlab_is_initial_dryrun
+
+    - name: Hold GitLab version if version is specified
+      ansible.builtin.dpkg_selections:
+        name: "{{ gitlab_package_name.split('=')[0] }}"
+        selection: hold
+      when: "'=' in gitlab_package_name"
 
   rescue:
 
