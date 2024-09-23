@@ -21,6 +21,11 @@ gitlab_configuration_file_path: '/etc/gitlab/gitlab.rb'
 
 # URL of the GitLab application
 gitlab_external_url: "http://localhost"
+# Enable GitLab Pages
+gitlab_pages_enable: false
+# URL for GitLab Pages
+gitlab_pages_external_url: "http://pages"
+
 # GitLab Theme to use
 gitlab_default_theme: "2"
 # Time Zone to set
