@@ -112,8 +112,8 @@
       ansible.builtin.command:
         # https://forum.gitlab.com/t/gitlab-18-4-0-removes-gitlab-backgroundmigration-remaining/131336
         cmd: gitlab-rails runner -e production 'puts Gitlab::Database::BackgroundMigration::BatchedMigration.select{ |m| not m.finished? and not m.finalized? }'
-      register: remaining
-      until: remaining.stdout == "0"
+      register: gitlab_remaining
+      until: gitlab_remaining.stdout == "0"
       retries: 10
       delay: 10
       check_mode: false
