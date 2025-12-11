@@ -4,7 +4,6 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/adfinis/ansible-collection-gitlab/ansible-lint.yml)
 [![adfinis.gitlab on Ansible Galaxy](https://img.shields.io/badge/collection-adfinis.gitlab-blue)](https://galaxy.ansible.com/ui/repo/published/adfinis/gitlab/)
 
-
 This role deploys GitLab package.
 
 To use the role add following to the `requirements.yml`:
@@ -12,7 +11,7 @@ To use the role add following to the `requirements.yml`:
 ```yaml
 collections:
   - name: adfinis.gitlab
-    version: 1.0.3
+    version: 1.0.4
 ```
 
 ## Roles
@@ -22,6 +21,7 @@ collections:
 Role is based on [HIFIS GitLab role](https://github.com/hifis-net/ansible-collection-toolkit/tree/main/roles/gitlab).
 
 It adds support for:
+
 - nested keys configuration as list e.g. `- key: ["object_store", "enabled"]`
 - deployment of custom pre-receive hooks
 - self-signed keys for test/PoC environments
@@ -52,4 +52,4 @@ Example Playbook:
 
 The Ansible collection `adfinis.gitlab` was written by:
 
-* Adfinis AG | [Website](https://www.adfinis.com/) | [GitHub](https://github.com/adfinis)
+- Adfinis AG | [Website](https://www.adfinis.com/) | [GitHub](https://github.com/adfinis)
