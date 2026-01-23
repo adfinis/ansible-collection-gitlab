@@ -95,13 +95,13 @@ nginx['listen_https'] = false
 {% for config in configurations %}
 {% for kvpair in configurations[config] %}
 {% if (kvpair.type is defined and kvpair.type == 'plain') or (kvpair.value is not string) %}
-{% if kvpair.key.__class__.__name__ == 'list' %}
+{% if kvpair.key | type_debug == 'list' %}
 {{ config}}{% for key in kvpair.key %}['{{ key }}']{% endfor %} = {{ kvpair.value }}
 {% else %}
 {{ config }}['{{ kvpair.key }}'] = {{ kvpair.value }}
 {% endif %}
 {% else %}
-{% if kvpair.key.__class__.__name__ == 'list' %}
+{% if kvpair.key | type_debug == 'list' %}
 {{ config}}{% for key in kvpair.key %}['{{ key }}']{% endfor %} = '{{ kvpair.value }}'
 {% else %}
 {{ config }}['{{ kvpair.key }}'] = '{{ kvpair.value }}'
