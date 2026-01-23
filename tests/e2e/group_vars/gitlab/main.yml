@@ -1,6 +1,6 @@
 gitlab_version: "17.3.1"
 gitlab_release: "ee.0"
-gitlab_is_primary: "true"
+gitlab_is_primary: true
 gitlab_external_url: "https://{{ ansible_host }}"
 gitlab_time_zone: "Europe/Zurich"
 gitlab_nginx_listen_https: "true"
