@@ -26,7 +26,7 @@ gitlab-pass: ip ## Print GitLab root password
 	ssh -l debian $(IP) -i kvm/id_ed25519 sudo cat /etc/gitlab/initial_root_password  | grep Password: | awk '{print $$2}'
 
 inventory: ssh-key ip ## Generate Ansible inventory file
-	echo "gitlab:\n  hosts:\n    gitlab_omnibus:\n      ansible_user: debian\n      ansible_host: $(IP)\n      become: true\n      ansible_ssh_private_key_file: kvm/id_ed25519" > inventory
+	echo "gitlab:\n  hosts:\n    gitlab_omnibus:\n      ansible_user: debian\n      ansible_host: $(IP)\n      ansible_ssh_private_key_file: kvm/id_ed25519" > inventory
 
 ansible: inventory ## Run Ansible playbook
 	ansible-playbook playbook.yml -i inventory
