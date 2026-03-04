@@ -5,6 +5,7 @@ set -o errexit
 set -o nounset
 
 TEMPDIR=$(mktemp -d)
+trap 'rm -rf "$TEMPDIR"' EXIT
 
 prefix="[vault-check]"
 zero_commit="0000000000000000000000000000000000000000"
@@ -75,8 +76,6 @@ for f in ${files_found}; do
                   bad_file=1
         fi
 done
-
-rm -rf "${TEMPDIR}" &> /dev/null
 
 if [[ $bad_file -eq 1 ]]
 then
