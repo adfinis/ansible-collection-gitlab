@@ -11,7 +11,7 @@ To use the role add following to the `requirements.yml`:
 ```yaml
 collections:
   - name: adfinis.gitlab
-    version: 1.1.0
+    version: 1.1.1
 ```
 
 ## Roles
